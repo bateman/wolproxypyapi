@@ -1,5 +1,5 @@
 # Base image
-FROM python:3.9-slim
+FROM python:slim
 
 # Label docker image
 LABEL maintainer="Fabio Calefato <fabio.calefato@uniba.it>"
