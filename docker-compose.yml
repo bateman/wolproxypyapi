@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  wolproxypyapi:
+    image: wolproxypyapi:latest
+    build: .
+    container_name: wolproxypyapi
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    volumes:
+      - ./logs:/logs:rw
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

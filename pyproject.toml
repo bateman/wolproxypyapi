@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "wolproxypyapi"
+version = "0.1.0"
+description = "A FastAPI RESTful web service for routing Wake-On-LAN packets via Internet"
+authors = ["Fabio Calefato <fabio.calefato@uniba.it>"]
+license = "MIT"
+include = [
+    "LICENSE",
+]
+
+[tool.poetry.scripts]
+wolproxypyapi = "wolproxypyapi.main:run"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+wolproxypycli = "^0.1.0"
+fastapi = "^0.70.1"
+uvicorn = "^0.16.0"
+rich = "^10.16.1"
+pretty-errors = "^1.2.25"
+
+[tool.poetry.dev-dependencies]
+isort = "^5.10.1"
+flake8 = "^4.0.1"
+black = "^21.12b0"
+pylint = "^2.12.2"
+mypy = "^0.920"
+bandit = "^1.7.1"
+autopep8 = "^1.6.0"
+pre-commit = "^2.16.0"
+pytest = "^6.2.5"
+pytest-cov = "^3.0.0"
+pydocstyle = "^6.1.1"
+mkdocs = "^1.2.3"
+mkdocs-autorefs = "^0.3.0"
+mkdocstrings = "^0.16.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
