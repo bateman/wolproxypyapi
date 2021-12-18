@@ -1,9 +1,9 @@
 """ FastAPI application for the wolproxypy API.
 
-    This module is the main module of the application.
+    This is the API module of the wolproxypy application.
     It is responsible for the routing of the requests.
-    The root path is '/' and shows the login and main pages.
-    The path '/mac' invokes the wakeonlan module.
+    The root path is '/' redirects to the '/docs'.
+    The path '/mac' invokes the wakeonlan core module.
 """
 import pathlib
 from typing import Any, Dict
