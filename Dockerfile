@@ -23,8 +23,6 @@ COPY wolproxypyapi wolproxypyapi
 COPY config config
 COPY entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
-RUN mkdir -p logs \
-    && chmod -R 777 logs
 
 # Export ports
 EXPOSE 80

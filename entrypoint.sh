@@ -1,8 +1,10 @@
 #!/bin/bash
 # this script is used to boot the Docker container
 
+mkdir -p logs
 touch /logs/error.log
 touch /logs/info.log
+chmod -R 777 logs
 
 exec gunicorn wolproxypyapi.main:app \
     --bind=0.0.0.0:80 \
