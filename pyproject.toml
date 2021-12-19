@@ -15,7 +15,7 @@ wolproxypyapi = "wolproxypyapi.main:run"
 python = "^3.9"
 wolproxypycli = "^0.1.0"
 fastapi = "^0.70.1"
-uvicorn = "^0.16.0"
+uvicorn = {extras = ["standard"], version = "^0.16.0"}
 rich = "^10.16.1"
 pretty-errors = "^1.2.25"
 
