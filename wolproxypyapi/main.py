@@ -11,6 +11,7 @@ from typing import Any, Dict
 import uvicorn
 from fastapi import FastAPI
 from fastapi.params import Path
+from info import contact, description, license_info, terms_of_service, title, version
 from starlette.responses import RedirectResponse
 from wolproxypycli import wol
 
@@ -24,7 +25,14 @@ VALID_MAC_RE = (
     "(?:[0-9A-Fa-f]{2}([:-]?)[0-9A-Fa-f]{2})){2}$"
 )
 
-app = FastAPI()
+app = FastAPI(
+    title=title,
+    description=description,
+    version=version,
+    terms_of_service=terms_of_service,
+    contact=contact,
+    license_info=license_info,
+)
 
 
 @app.get("/")
