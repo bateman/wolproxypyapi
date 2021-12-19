@@ -18,15 +18,16 @@ RUN apt-get update \
     && make production \
     && apt-get purge -y --auto-remove gcc build-essential
 
-# Copy
+# Copy app files
 COPY wolproxypyapi wolproxypyapi
 COPY config config
-
+COPY entrypoint.sh entrypoint.sh
+RUN chmod +x entrypoint.sh
 RUN mkdir -p logs \
     && chmod -R 777 logs
 
 # Export ports
 EXPOSE 80
 
-# Start app, overrides config/uvicorn.config
-CMD ["uvicorn", "wolproxypyapi.main:app", "--host", "0.0.0.0", "--port", "80"]
+# Run start script
+ENTRYPOINT ["./entrypoint.sh"]
