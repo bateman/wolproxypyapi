@@ -25,7 +25,7 @@ COPY entrypoint.sh entrypoint.sh
 RUN chmod +x entrypoint.sh
 
 # Export ports
-EXPOSE 80
+EXPOSE 8000
 
 # Run start script
 ENTRYPOINT ["./entrypoint.sh"]
