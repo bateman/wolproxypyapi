@@ -10,6 +10,9 @@ services:
       - "8000:8000"
     volumes:
       - ./logs:/logs
+    env_file:
+      - .env
+    user: "${UID}:${GID}"
     networks:
       - app-network
 
