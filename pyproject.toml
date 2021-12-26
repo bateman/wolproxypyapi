@@ -39,3 +39,19 @@ mkdocstrings = "^0.16.2"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line_length = 120
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.bandit]
+skips = ["B104","B610","B611","B702","B703"]
+
+[tool.pydocstyle]
+ignore = "D104,D203,D213,D406,D407,D413"
