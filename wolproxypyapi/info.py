@@ -1,6 +1,4 @@
-"""
-Contains information about the FastAPI app.
-"""
+"""Provide information about the FastAPI app."""
 
 title = "wolproxypyapi"
 description = """
