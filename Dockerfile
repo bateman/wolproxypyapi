@@ -9,8 +9,10 @@ LABEL org.label-schema.license="MIT"
 COPY Makefile Makefile
 COPY pyproject.toml pyproject.toml
 COPY poetry.lock poetry.lock
-RUN python -m pip install --upgrade pip
-RUN python -m pip install poetry
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl
+RUN curl -sSL https://install.python-poetry.org | python -
+ENV PATH="${PATH}:/root/.local/bin"
 RUN poetry config virtualenvs.create false
 RUN apt-get update \
     && apt-get install -y --no-install-recommends gcc build-essential \
