@@ -10,7 +10,7 @@ DOCKER := $(shell command -v docker-compose 2> /dev/null)
 
 .DEFAULT_GOAL := help
 
-all: test build export docs docker
+all:  build export docs docker
 
 .PHONY: help
 help:
@@ -63,7 +63,8 @@ $(BUILD_STAMP): pyproject.toml poetry.lock
 export: $(EXPORT_STAMP)
 $(EXPORT_STAMP): pyproject.toml poetry.lock
 	@if [ -z $(POETRY) ]; then echo "Poetry could not be found. See https://python-poetry.org/docs/"; exit 2; fi
-	$(POETRY) export -f requirements.txt --output requirements.txt --dev --without-hashes
+	$(POETRY) export -f requirements.txt --output requirements-dev.txt --dev --without-hashes
+	$(POETRY) export -f requirements.txt --output requirements.txt --without-hashes
 	touch $(EXPORT_STAMP)
 
 docs: export
