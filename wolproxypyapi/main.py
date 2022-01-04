@@ -6,7 +6,7 @@ The root path is '/' redirects to the '/docs'.
 The path '/mac' invokes the wakeonlan core module.
 """
 import pathlib
-from typing import Any, Dict
+from typing import Dict
 
 import uvicorn
 from fastapi import FastAPI
