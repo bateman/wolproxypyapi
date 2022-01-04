@@ -1,1 +1,1 @@
-from .config import api_config, logger
+from .config import API_KEY, api_config, logger

@@ -2,9 +2,11 @@
 import configparser
 import logging
 import logging.config
+import os
 from pathlib import Path
 
 import pretty_errors
+from dotenv import load_dotenv
 from rich.logging import RichHandler
 
 # Directories
@@ -39,3 +41,8 @@ pretty_errors.configure(
 api_config = configparser.ConfigParser()
 with open(Path(CONFIG_DIR, "api.config"), encoding="UTF-8") as f:
     api_config.read_file(f)
+
+
+# Load environment variables
+load_dotenv()
+API_KEY = os.environ.get("API_KEY") or os.urandom(24).hex()

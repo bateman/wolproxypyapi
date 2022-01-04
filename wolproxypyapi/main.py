@@ -10,7 +10,6 @@ from typing import Dict
 
 import uvicorn
 from fastapi import FastAPI
-from fastapi.params import Path
 from starlette.responses import RedirectResponse
 from wolproxypycli import wol
 
@@ -18,10 +17,10 @@ from config import api_config, logger
 from wolproxypyapi import parent_module
 
 from .info import contact, description, license_info, terms_of_service, title, version
+from .models import ApiKey, Host
 
 REDIRECT_CODE = 301
-# Regex to check valid MAC address
-VALID_MAC_RE = r"^(?:[0-9A-Fa-f]{2}([:-]?)[0-9A-Fa-f]{2})(?:(?:\1|\.)" "(?:[0-9A-Fa-f]{2}([:-]?)[0-9A-Fa-f]{2})){2}$"
+
 
 app = FastAPI(
     title=title,
@@ -50,20 +49,19 @@ async def root() -> RedirectResponse:
     return response
 
 
-@app.get("/mac/{mac_address}")
-async def send_wol_packet_mac(
-    mac_address: str = Path(..., regex=VALID_MAC_RE, min_length=12, max_length=18)  # type: ignore[Path]
-) -> Dict[str, str]:
-    """Invoke the module to send a Wake-On-Lan packet to a MAC address.
+@app.post("/wol")
+async def send_wol_packet_mac(host: Host, key: ApiKey) -> Dict[str, str]:
+    """Invoke the module to send a Wake-On-Lan packet to a host.
 
     Args:
-        mac_address: the MAC address to send the packet to.
+        host: the host to send the packet to.
+        key: the API key to authenticate the request.
 
     Returns:
         Dict[str, str]: The status ('success' or 'failure') of the wake-on-lan packet.
     """
-    logger.info(f"Received request to wake up host {mac_address}")
-    status = wol(mac_address)
+    logger.info(f"Received valid request to wake up host {host}")
+    status = wol(host.mac_address, host.ip_address, host.port, host.interface)
     return {"status": status}
 
 
