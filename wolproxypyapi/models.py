@@ -43,6 +43,20 @@ class Host(BaseModel):
         example="192.168.0.0/24", title="Interface", description="The interface to send the packet to."
     )
 
+    @validator("ip_address", pre=True)
+    def ip_address_validator(cls, v):
+        """Validate an IP address as empty string."""
+        if v == "":
+            v = None
+        return v
+
+    @validator("interface", pre=True)
+    def interface_validator(cls, v):
+        """Validate an interface as empty string."""
+        if v == "":
+            v = None
+        return v
+
     def __str__(self) -> str:
         """Return a string representation of the host."""
         return f"mac: {self.mac_address}, port: {self.port}, " f"ip: {self.ip_address}, interface: {self.interface}"
