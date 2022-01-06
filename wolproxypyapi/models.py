@@ -39,22 +39,36 @@ class Host(BaseModel):
     ip_address: Optional[IPvAnyAddress] = Field(
         example="192.168.0.2", title="IP address", description="The IP address of the host to wake up."
     )
-    interface: Optional[IPvAnyInterface] = Field(
+    interface: Optional[IPvAnyAddress] = Field(
         example="192.168.0.0/24", title="Interface", description="The interface to send the packet to."
     )
 
     @validator("ip_address", pre=True)
-    def ip_address_validator(cls, v):
+    def ip_address_validator_empty_str(cls, v):
         """Validate an IP address as empty string."""
         if v == "":
             v = None
         return v
 
+    @validator("ip_address", pre=False)
+    def ip_address_validator_to_str(cls, v):
+        """Turn a valid IP address into string."""
+        if v is not None:
+            v = str(v)
+        return v
+
     @validator("interface", pre=True)
-    def interface_validator(cls, v):
+    def interface_validator_empty_Str(cls, v):
         """Validate an interface as empty string."""
         if v == "":
             v = None
+        return v
+
+    @validator("interface", pre=False)
+    def interface_validator_to_str(cls, v):
+        """Turn a valid IP address into string."""
+        if v is not None:
+            v = str(v)
         return v
 
     def __str__(self) -> str:
