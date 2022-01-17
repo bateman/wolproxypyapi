@@ -2,7 +2,7 @@
 
 from typing import Optional
 
-from pydantic import BaseModel, ConstrainedInt, Field, IPvAnyAddress, IPvAnyInterface
+from pydantic import BaseModel, Field, IPvAnyAddress
 from pydantic.class_validators import validator
 
 from config import API_KEY

@@ -7,8 +7,6 @@ The path '/mac' invokes the wakeonlan core module.
 """
 import json
 import pathlib
-from typing import Dict
-from urllib import response
 
 import uvicorn
 from fastapi import FastAPI
