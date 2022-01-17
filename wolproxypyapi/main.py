@@ -5,11 +5,14 @@ It is responsible for the routing of the requests.
 The root path is '/' redirects to the '/docs'.
 The path '/mac' invokes the wakeonlan core module.
 """
+import json
 import pathlib
 from typing import Dict
+from urllib import response
 
 import uvicorn
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from starlette.responses import RedirectResponse
 from wolproxypycli import wol
 
@@ -45,24 +48,28 @@ async def root() -> RedirectResponse:
         RedirectResponse: Redirect to the documentation.
     """
     logger.info("Redirecting to doc")
-    response = RedirectResponse(url="/docs", status_code=REDIRECT_CODE)
-    return response
+    return RedirectResponse(url="/docs", status_code=REDIRECT_CODE)
 
 
 @app.post("/wol")
-async def send_wol_packet_mac(host: Host, key: ApiKey) -> Dict[str, str]:
+async def send_wol_packet_mac(host: Host, key: ApiKey) -> JSONResponse:
     """Invoke the module to send a Wake-On-Lan packet to a host.
+
+    The key authentication is automatically performed by the Pydantic validator
+    within the ApiKey model.
 
     Args:
         host: the host to send the packet to.
         key: the API key to authenticate the request.
 
     Returns:
-        Dict[str, str]: The status ('success' or 'failure') of the wake-on-lan packet.
+        JSONResponse: The status of the wake-on-lan packet.
     """
-    logger.info(f"Received valid request to wake up host {host}")
+    logger.info(f"Received a request to wake up host {host}")
     status = wol(host.mac_address, host.ip_address, host.port, host.interface)
-    return {"status": status}
+    content = json.dumps({"status": status})
+    logger.info(f"Response: {content}")
+    return JSONResponse(content=content)
 
 
 def run():
