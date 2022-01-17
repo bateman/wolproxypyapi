@@ -40,7 +40,7 @@ class Host(BaseModel):
         example="192.168.0.2", title="IP address", description="The IP address of the host to wake up."
     )
     interface: Optional[IPvAnyAddress] = Field(
-        example="192.168.0.0/24", title="Interface", description="The interface to send the packet to."
+        example="192.168.0.1", title="Interface", description="The interface to send the packet to."
     )
 
     @validator("ip_address", pre=True)
