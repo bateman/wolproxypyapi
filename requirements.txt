@@ -24,3 +24,4 @@ wakeonlan==2.1.0; python_version >= "3.9" and python_version < "4.0"
 watchgod==0.7; python_version >= "3.5"
 websockets==10.1; python_version >= "3.7"
 wolproxypycli==0.1.2; python_version >= "3.9" and python_version < "4.0"
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
