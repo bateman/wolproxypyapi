@@ -15,7 +15,7 @@ python-dotenv==0.19.2; python_version >= "3.5"
 pyyaml==6.0; python_version >= "3.6"
 rich==10.16.2; python_full_version >= "3.6.2" and python_full_version < "4.0.0"
 sniffio==1.2.0; python_version >= "3.6" and python_full_version >= "3.6.2"
-starlette==0.16.0; python_version >= "3.6" and python_full_version >= "3.6.1"
+starlette==0.25.0; python_version >= "3.6" and python_full_version >= "3.6.1"
 typer==0.4.0; python_version >= "3.9" and python_version < "4.0"
 typing-extensions==4.0.1; python_version >= "3.6" and python_full_version >= "3.6.1"
 uvicorn==0.16.0
