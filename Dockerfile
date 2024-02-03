@@ -1,5 +1,5 @@
 # Base image
-FROM python:3.10-slim-bullseye
+FROM python:3.11.4-slim-bullseye
 
 # Label docker image
 LABEL maintainer="Fabio Calefato <fabio.calefato@uniba.it>"
