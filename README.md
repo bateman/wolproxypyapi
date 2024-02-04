@@ -2,8 +2,10 @@
 ![GitHub](https://img.shields.io/github/license/bateman/wolproxypyapi)
 
 [![CI_CD](https://github.com/bateman/wolproxypyapi/actions/workflows/CI_CD.yml/badge.svg)](https://github.com/bateman/wolproxypyapi/actions/workflows/CI_CD.yml)
-[![Docker](https://img.shields.io/docker/cloud/build/bateman/wolproxypyapi?label=Docker&style=flat)](https://hub.docker.com/r/bateman/wolproxypyapi/builds)
 [![Documentation Status](https://readthedocs.org/projects/wolproxypyapi/badge/?version=latest)](https://wolproxypyapi.readthedocs.io/en/latest/?badge=latest)
+
+![Docker Pulls](https://img.shields.io/docker/pulls/bateman/wolproxypyapi)
+![Docker Image Version (latest semver)](https://img.shields.io/docker/v/bateman/wolproxypyapi)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/bateman/wolproxypyapi/badge.svg)](https://snyk.io/test/github/bateman/wolproxypyapi)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/bateman/wolproxypyapi)
