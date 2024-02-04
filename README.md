@@ -6,8 +6,6 @@
 [![Documentation Status](https://readthedocs.org/projects/wolproxypyapi/badge/?version=latest)](https://wolproxypyapi.readthedocs.io/en/latest/?badge=latest)
 
 [![Known Vulnerabilities](https://snyk.io/test/github/bateman/wolproxypyapi/badge.svg)](https://snyk.io/test/github/bateman/wolproxypyapi)
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/bateman/wolproxypyapi.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bateman/wolproxypyapi/alerts/)
-[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/bateman/wolproxypyapi.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/bateman/wolproxypyapi/context:python)
 ![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/bateman/wolproxypyapi)
 
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
