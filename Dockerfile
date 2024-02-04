@@ -1,20 +1,19 @@
 # Base image
-FROM python:3.11.4-slim-bullseye
+FROM python:3.12-slim-bookworm
 
 # Label docker image
 LABEL maintainer="Fabio Calefato <fabio.calefato@uniba.it>"
 LABEL org.label-schema.license="MIT"
 
 # Install dependencies
+WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-    && apt-get dist-upgrade -y \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-RUN pip install --upgrade pip setuptools wheel build
-RUN pip install -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy app files
 COPY wolproxypyapi wolproxypyapi
