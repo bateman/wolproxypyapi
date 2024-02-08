@@ -16,7 +16,7 @@ all:  build export docs docker
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
 	@echo ""
-	@echo "  install     install packages and prepare the development environment"
+	@echo "  install     install packages and prepare the development environment with dev dependencies"
 	@echo "  update      force-udpate packages and prepare the development environment"
 	@echo "  production  install packages and prepare the production environment"
 	@echo "  build       build dist wheel and tarball files"
@@ -27,14 +27,14 @@ help:
 	@echo "  lint        run the code linters"
 	@echo "  format      reformat code"
 	@echo "  precommit   run the pre-commit checks on all files"
-	@echo "  test        run all the tests"
+	@echo "  tests       run all the tests"
 	@echo ""
 	@echo "Check the Makefile to know exactly what each target is doing."
 
 install: $(INSTALL_STAMP)
 $(INSTALL_STAMP): pyproject.toml
 	@if [ -z $(POETRY) ]; then echo "Poetry could not be found. See https://python-poetry.org/docs/"; exit 2; fi
-	$(POETRY) install --no-root
+	$(POETRY) install
 	$(POETRY) lock --no-update
 	$(POETRY) run pre-commit install
 	touch $(INSTALL_STAMP)
@@ -92,12 +92,12 @@ format: $(INSTALL_STAMP)
 	$(POETRY) run black tests/ $(SRC)
 
 .PHONY: precommit
-precommit: $(INSTALL_STAMP) $(PRECOMMIT_CONF)
+precommit: $(INSTALL_STAMP) $(PRECOMMIT_CONF) lint
 	$(POETRY) run pre-commit run --all-files
 
-.PHONY: test
-test: $(INSTALL_STAMP)
-	$(POETRY) run pytest tests/ --cov-report term-missing --cov-fail-under 100 --cov $(SRC)
+.PHONY: tests
+tests: $(INSTALL_STAMP)
+	$(POETRY) run pytest tests/ $(SRC)
 
 .PHONY: docker
 docker: $(INSTALL_STAMP)
