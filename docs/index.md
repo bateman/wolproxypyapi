@@ -3,7 +3,7 @@
 This is a simple package for sending Wake-On-LAN packets to other host in a local network. This started as a pet-project to put together and test a series of technologies I'm interested in.
 The all WOL packet sending is managed by the Python package [wakeonlan](https://pypi.org/project/wakeonlan/), for which wolproxypy act as a wrapper.
 
-However, wolproxypy also offers a fully-dockerozed web app (built on Flask) and an API (built on FastAPI) that act as proxy for routing magic WOL packets via Internet.
+However, wolproxypy also offers a fully-dockerized web app (built on Flask) and an API (built on FastAPI) that act as proxy for routing magic WOL packets via the Internet.
 
 ## Installation
 
