@@ -1665,4 +1665,4 @@ wakeonlan = ">=2.1.0,<3.0.0"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "a9f10ad0b770076a2815311b35a2e0bc56a3f16988414e17b35eb872a3670a2a"
+content-hash = "2137eaf775ac395f28e7cac47ddda3fa1ba3f5d040fc5ed406b6d0b5ac26cf2c"

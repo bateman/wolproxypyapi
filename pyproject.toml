@@ -21,6 +21,9 @@ rich = "^10.16.1"
 pretty-errors = "^1.2.25"
 python-dotenv = "^1.0.1"
 
+[tool.poetry.group.dev]
+optional = true
+
 [tool.poetry.group.dev.dependencies]
 isort = "^5.13.2"
 flake8 = "^7.0.0"
@@ -33,6 +36,9 @@ pre-commit = "^3.6.0"
 pytest = "^8.0.0"
 pytest-cov = "^4.1.0"
 pydocstyle = "^6.3.0"
+
+[tool.poetry.group.docs]
+optional = true
 
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
@@ -59,3 +65,6 @@ skips = ["B104","B610","B611","B702","B703"]
 
 [tool.pydocstyle]
 ignore = "D104,D203,D213,D406,D407,D413"
+
+[tool.pytest.ini_options]
+addopts = ["--cov-fail-under=80", "--cov-report=term-missing", "--cov=wolproxypyapi"]
