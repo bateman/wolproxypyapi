@@ -3,8 +3,7 @@
 import re
 from typing import Optional
 
-from pydantic import BaseModel, Field, IPvAnyAddress
-from pydantic.class_validators import validator
+from pydantic import BaseModel, Field, IPvAnyAddress, field_validator
 
 from config import API_KEY
 
@@ -27,52 +26,64 @@ class Host(BaseModel):
 
     mac_address: str = Field(
         ...,
-        examples=["00:11:22:33:44:55", "66:77:88:99:AA:BB"],
+        examples=[
+            "3D:F2:C9:A6:B3:4F",
+            "3D-F2-C9-A6-B3-4F",
+            "3D.F2.C9.A6.B3.4F",
+            "3DF2:C9A6:B34F",
+            "3DF2-C9A6-B34F",
+            "3DF2.C9A6.B34F",
+        ],
         min_length=12,
         max_length=18,
         title="MAC address",
         description="The MAC address of the host to wake up.",
     )
     port: Optional[int] = Field(
-        gt=0, lt=65536, examples=["9"], title="Port", description="The port to use to wake up the host."
+        default=9, gt=0, lt=65536, examples=["9"], title="Port", description="The port to use to wake up the host."
     )
     ip_address: Optional[IPvAnyAddress] = Field(
-        examples=["192.168.0.2", "10.0.0.100"], title="IP address", description="The IP address of the host to wake up."
+        default=None,
+        examples=["192.168.0.2", "10.0.0.100"],
+        title="IP address",
+        description="The IP address of the host to wake up.",
     )
     interface: Optional[IPvAnyAddress] = Field(
-        examples=["192.168.0.1", "10.0.0.1"], title="Interface", description="The interface to send the packet to."
+        default=None,
+        examples=["192.168.0.1", "10.0.0.1"],
+        title="Interface",
+        description="The interface to send the packet to.",
     )
 
-    @validator("mac_address")
+    @field_validator("mac_address")
     def validate_mac_address(cls, v):
         """Validate the mac_address field."""
-        pattern = re.compile(VALID_MAC_RE)
-        if not pattern.match(v):
+        if not re.match(VALID_MAC_RE, v):
             raise ValueError("Invalid MAC address")
         return v
 
-    @validator("ip_address", pre=True)
+    @field_validator("ip_address", mode="before")
     def ip_address_validator_empty_str(cls, v):
         """Validate an IP address as empty string."""
         if v == "":
             v = None
         return v
 
-    @validator("ip_address", pre=False)
+    @field_validator("ip_address", mode="after")
     def ip_address_validator_to_str(cls, v):
         """Turn a valid IP address into string."""
         if v is not None:
             v = str(v)
         return v
 
-    @validator("interface", pre=True)
-    def interface_validator_empty_Str(cls, v):
+    @field_validator("interface", mode="before")
+    def interface_validator_empty_str(cls, v):
         """Validate an interface as empty string."""
         if v == "":
             v = None
         return v
 
-    @validator("interface", pre=False)
+    @field_validator("interface", mode="after")
     def interface_validator_to_str(cls, v):
         """Turn a valid IP address into string."""
         if v is not None:
@@ -101,7 +112,7 @@ class ApiKey(BaseModel):
         description="The API key to use to authenticate the request.",
     )
 
-    @validator("key")
+    @field_validator("key")
     def key_validator(cls, v):
         """Validate the API key."""
         if v != API_KEY:
