@@ -13,7 +13,7 @@
 
 A FastAPI RESTful web service for routing Wake-On-LAN packets via Internet.
 
-This is a simple package for sending Wake-On-LAN packets to other hosts in a local network. 
+This is a simple package for sending Wake-On-LAN packets to other hosts in a local network.
 However, wolproxypyapi also offers a fully-dockerized web app (built on Flask) and an API (built on FastAPI) that act as proxy for routing magic WOL packets via the Internet.
 
 ## Installation
@@ -28,7 +28,7 @@ To launch the web application, run `poetry run wolproxypyapi` and connect to <ht
 
 ### Docker
 
-Assuming that you have Docker installed on your system and that you have cloned the GitHub repository locally as per the [Installation](#installation) step 1 above, to build and execute the image locally, run 
+Assuming that you have Docker installed on your system and that you have cloned the GitHub repository locally as per the [Installation](#installation) step 1 above, to build and execute the image locally, run
 `docker-compose up -d --build`.
 
 The app will be available at <http://127.0.0.0:8000>. To change the port, edit the file `docker-compose.yml` accordingly and rebuild the image.
