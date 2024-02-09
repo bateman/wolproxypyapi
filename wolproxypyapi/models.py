@@ -1,5 +1,6 @@
 """Pydantic models for the WolProxyPy API."""
 
+import re
 from typing import Optional
 
 from pydantic import BaseModel, Field, IPvAnyAddress
@@ -26,22 +27,29 @@ class Host(BaseModel):
 
     mac_address: str = Field(
         ...,
-        example="00:11:22:33:44:55",
-        regex=VALID_MAC_RE,
+        examples=["00:11:22:33:44:55", "66:77:88:99:AA:BB"],
         min_length=12,
         max_length=18,
         title="MAC address",
         description="The MAC address of the host to wake up.",
     )
     port: Optional[int] = Field(
-        gt=0, lt=65536, example="9", title="Port", description="The port to use to wake up the host."
+        gt=0, lt=65536, examples=["9"], title="Port", description="The port to use to wake up the host."
     )
     ip_address: Optional[IPvAnyAddress] = Field(
-        example="192.168.0.2", title="IP address", description="The IP address of the host to wake up."
+        examples=["192.168.0.2", "10.0.0.100"], title="IP address", description="The IP address of the host to wake up."
     )
     interface: Optional[IPvAnyAddress] = Field(
-        example="192.168.0.1", title="Interface", description="The interface to send the packet to."
+        examples=["192.168.0.1", "10.0.0.1"], title="Interface", description="The interface to send the packet to."
     )
+
+    @validator("mac_address")
+    def validate_mac_address(cls, v):
+        """Validate the mac_address field."""
+        pattern = re.compile(VALID_MAC_RE)
+        if not pattern.match(v):
+            raise ValueError("Invalid MAC address")
+        return v
 
     @validator("ip_address", pre=True)
     def ip_address_validator_empty_str(cls, v):
@@ -88,7 +96,7 @@ class ApiKey(BaseModel):
 
     key: str = Field(
         ...,
-        example="123456789",
+        examples=["123456789"],
         title="API key",
         description="The API key to use to authenticate the request.",
     )
