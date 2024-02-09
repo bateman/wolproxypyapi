@@ -7,13 +7,33 @@ However, wolproxypy also offers a fully-dockerized web app (built on Flask) and 
 
 ## Installation
 
+### For development
+
 1. `git clone https://github.com/bateman/wolproxypyapi` - Clone the project from GitHub.
 2. `make install` - Install all dependencies via [poetry](https://python-poetry.org/).
-3. `make docs` - Build the documentation site via [mkdocs](https://www.mkdocs.org/).
+
+### As a module
+
+Using `pip`:
+
+```
+pip install wolproxypyapi
+```
+
+Using `poetry`:
+
+```
+poetry add wolproxypyapi
+```
 
 ## Usage
 
+Firs, make a copy of the `.env-template` file and rename it `.env`.
+There, configure the `API_KEY` field (default `42`). You are going to provide this valid key to the API whenever a request is made. Otherwise, requests will be denied.
+
 To launch the web application, run `poetry run wolproxypyapi` and connect to <http://127.0.0.0:8000>. You can change the port by editing the file `config/api.config`.
+
+Alternatively, if you don't have poetry installed, you can run it as a module: `python -m wolproxypyapi`.
 
 ### Docker
 
@@ -32,3 +52,7 @@ Alternatively, if you don't want to clone the repository, just download the late
 `docker start bateman/wolproxypyapi`
 
 The app will be again accessible at <http://127.0.0.0:8000>.
+
+#### Note
+
+If you want the container to be run with specific UID and GID, edit the fields accordingly in the `.env` file.
