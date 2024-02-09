@@ -5,6 +5,7 @@ It is responsible for the routing of the requests.
 The root path is '/' redirects to the '/docs'.
 The path '/mac' invokes the wakeonlan core module.
 """
+
 import json
 import pathlib
 
