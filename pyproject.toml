@@ -36,9 +36,6 @@ pydocstyle = "^6.3.0"
 importlib-metadata = "<5.0.0"
 httpx = "^0.26.0"
 
-[tool.poetry.group.docs]
-optional = true
-
 [tool.poetry.group.docs.dependencies]
 mkdocs = "^1.5.3"
 mkdocstrings = "^0.24.0"
