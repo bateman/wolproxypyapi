@@ -1,3 +1,5 @@
+.SHELLARGS := -e
+
 NAME := wolproxypyapi
 INSTALL_STAMP := .install.stamp
 UPDATE_STAMP := .update.stamp
