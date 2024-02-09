@@ -21,9 +21,6 @@ wolproxypycli = "^0.1.7"
 fastapi = {extras = ["all"], version = "^0.109.2"}
 rich = "^13.7.0"
 
-[tool.poetry.group.dev]
-optional = true
-
 [tool.poetry.group.dev.dependencies]
 isort = "^5.13.2"
 flake8 = "^7.0.0"
