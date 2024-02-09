@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "wolproxypyapi"
-version = "0.1.2"
+version = "0.1.3"
 description = "A FastAPI RESTful web service for routing Wake-On-LAN packets via Internet"
 authors = ["Fabio Calefato <fabio.calefato@uniba.it>"]
 license = "MIT"
