@@ -1,5 +1,5 @@
 # wolproxypyapi
-[![CI_CD](https://github.com/bateman/wolproxypyapi/actions/workflows/CI_CD.yml/badge.svg)](https://github.com/bateman/wolproxypyapi/actions/workflows/CI_CD.yml)
+[![Workflow](https://github.com/bateman/wolproxypyapi/actions/workflows/release.yml/badge.svg)](https://github.com/bateman/wolproxypyapi/actions/workflows/release.yml)
 [![Documentation Status](https://readthedocs.org/projects/wolproxypyapi/badge/?version=latest)](https://wolproxypyapi.readthedocs.io/en/latest/?badge=latest)
 ![Docker Pulls](https://img.shields.io/docker/pulls/bateman/wolproxypyapi)
 ![Docker Image Version (latest semver)](https://img.shields.io/docker/v/bateman/wolproxypyapi)
