@@ -85,5 +85,4 @@ def run():
         host=api_config["net"]["host"],
         port=int(api_config["net"]["port"]),
         log_level=api_config["logging"]["level"],
-        debug=bool(api_config["logging"]["debug"]),
     )
