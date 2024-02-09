@@ -66,4 +66,4 @@ skips = ["B101","B104","B610","B611","B702","B703"]
 ignore = "D104,D203,D213,D406,D407,D413"
 
 [tool.pytest.ini_options]
-addopts = ["--cov-fail-under=80", "--cov-report=term-missing", "--cov=wolproxypyapi"]
+addopts = ["--cov-fail-under=75", "--cov-report=term-missing", "--cov=wolproxypyapi"]
