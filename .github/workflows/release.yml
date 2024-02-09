@@ -85,4 +85,4 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         push: true
-        tags: bateman/wolproxypyapi:latest bateman/wolproxypyapi:${{ steps.tag.outputs.version }}
+        tags: bateman/wolproxypyapi:latest, bateman/wolproxypyapi:${{ steps.tag.outputs.version }}
